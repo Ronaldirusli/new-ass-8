@@ -9,9 +9,9 @@ import type {
   Testimonial,
   FaqItem,
 } from '../types/index';
-import img1 from '../assets/portofolio 1.png';
-import img2 from '../assets/portofolio 2.png';
-import img3 from '../assets/portofolio 3.png';
+import img1 from '../assets/Portofolio 1.png';
+import img2 from '../assets/Portofolio 2.png';
+import img3 from '../assets/Portofolio 3.png';
 import img4 from '../assets/Container.png';
 import img5 from '../assets/Website.png';
 import img6 from '../assets/Mobile App Development.png';
@@ -22,12 +22,12 @@ import img10 from '../assets/IT Infrastructure.png';
 import img11 from '../assets/Icon.png';
 import img12 from '../assets/QA Solutions.png';
 import img13 from '../assets/IT Consulting & Support.png';
-import img14 from '../assets/imgfintech.png';
-import img15 from '../assets/imgecommerce.png';
-import img16 from '../assets/imghealth.png';
+import img14 from '../assets/Imgfintech.png';
+import img15 from '../assets/Imgecommerce.png';
+import img16 from '../assets/Imghealth.png';
 import john from '../assets/Johnlee.png';
-import sarah from '../assets/sarahtan.png';
-import emily from '../assets/emilychen.png';
+import sarah from '../assets/Sarahtan.png';
+import emily from '../assets/Emilychen.png';
 
 export const navItems: NavItem[] = [
   { label: 'About', href: '/' },
