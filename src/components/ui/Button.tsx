@@ -11,11 +11,11 @@
  * 3. Add more variants jika diperlukan
  */
 
-import React from 'react';
+import React from "react";
 
 // Type definition untuk button variants
-type ButtonVariant = 'primary' | 'secondary' | 'outline';
-type ButtonSize = 'sm' | 'md' | 'lg';
+type ButtonVariant = "primary" | "secondary" | "outline";
+type ButtonSize = "sm" | "md" | "lg";
 
 // Props interface dengan TypeScript
 interface ButtonProps {
@@ -26,7 +26,7 @@ interface ButtonProps {
   size?: ButtonSize;
   children?: React.ReactNode;
   disabled?: boolean;
-  type?: 'button' | 'submit' | 'reset';
+  type?: "button" | "submit" | "reset";
 }
 
 /**
@@ -41,44 +41,44 @@ interface ButtonProps {
  * @param type - Button type attribute
  */
 const Button: React.FC<ButtonProps> = ({
-  label = '',
-  variant = 'primary',
-  size = 'md',
+  label = "",
+  variant = "primary",
+  size = "md",
   children,
   onClick,
-  className = '',
+  className = "",
   disabled = false,
-  type = 'button',
+  type = "button",
 }) => {
   // Base styles yang selalu applied
   const baseStyles =
-    'font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
+    "font-medium rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   // Variant styles - SESUAIKAN dengan design Figma!
   const variantStyles = {
-    primary: 'bg-gray-800 text-white hover:bg-gray-800 focus:ring-blue-500',
+    primary: "bg-gray-800 text-white hover:bg-gray-800 focus:ring-blue-500",
     secondary:
-      'bg-transparent text-gray-300 hover:bg-gray-700 focus:ring-gray-500',
+      "bg-transparent text-gray-300 hover:bg-gray-700 focus:ring-gray-500",
     outline:
-      'border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500',
+      "border-2 border-blue-600 text-blue-600 hover:bg-blue-50 focus:ring-blue-500",
   };
 
   // Size styles
   const sizeStyles = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg',
+    sm: "px-4 py-2 text-sm",
+    md: "px-6 py-3 text-base",
+    lg: "px-8 py-4 text-lg",
   };
 
   // Disabled styles
-  const disabledStyles = 'opacity-50 cursor-not-allowed';
+  const disabledStyles = "opacity-50 cursor-not-allowed";
 
   // Combine all styles
   const buttonStyle = `
     ${baseStyles}
     ${variantStyles[variant]}
     ${sizeStyles[size]}
-    ${disabled ? disabledStyles : ''}
+    ${disabled ? disabledStyles : ""}
     ${className}
   `.trim();
 
@@ -88,7 +88,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick}
       disabled={disabled}
       className={
-        'bg-orange-600 text-white px-6 py-2.5 gap-4 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-orange-700 active:scale-95 cursor-pointer shadow-orange-500 ' +
+        "bg-orange-600 text-white px-6 py-2.5 gap-4 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-orange-700 active:scale-95 cursor-pointer shadow-orange-500" +
         buttonStyle
       }
     >

@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               {isDarkMode ? "Light" : "Dark"}
             </button>
-            <Button label="Let's Talk" className="rounded-full" />
+            <Button label="Let's Talk" />
           </div>
           <div className="flex lg:hidden items-center gap-2">
             <button
