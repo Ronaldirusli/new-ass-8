@@ -1,0 +1,61 @@
+/**
+ * Main CSS File
+ *
+ * Tailwind CSS v4 - Using new @import syntax
+ * Docs: https://tailwindcss.com/docs/installation/using-vite
+ */
+
+@import 'tailwindcss';
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* Tell Tailwind where to scan for classes */
+@source "./**/*.{js,jsx,ts,tsx}";
+@source "../index.html";
+@theme {
+  --font-sans: 'Quicksand';
+  --font-heading: 'Quicksand';
+  --font-body: 'Quicksand';
+}
+/**
+ * Custom Global Styles
+ *
+ * Add your custom global styles here if needed
+ * Prefer using Tailwind utilities in components
+ */
+@custom-variant dark (&:where(.dark, .dark *));
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: Custom scrollbar styles */
+/* Uncomment if you want custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+@theme {
+  font family {
+    quicksand: ['Quicksand', 'sans-serif'],
+  }
+  
+.quicksand-<uniquifier> {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+  }
+  */
