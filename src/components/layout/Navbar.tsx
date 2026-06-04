@@ -1,103 +1,118 @@
-import React, { useState } from 'react';
-import type { NavItem } from '../../types';
-import Button from '../ui/Button';
+import React, { useState } from "react";
+import type { NavItem } from "../../types";
+import Button from "../ui/Button";
+
 interface NavbarProps {
   navItems: NavItem[];
-  isDarkmode?: boolean;
   onClick?: () => void;
-  currentTheme: 'light' | 'dark';
+  currentTheme: "light" | "dark";
   onToggleTheme: () => void;
 }
+
 export const Navbar: React.FC<NavbarProps> = ({
   navItems,
-  isDarkmode = false,
+  currentTheme,
+  onToggleTheme,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const isDarkMode = currentTheme === "dark";
+
   return (
-    <nav className='bg-white text-gray-900 dark:bg-black dark:text-white backdrop-blur-md fixed w-full top-0 left-0 z-50 transition-colors duration-300'>
-      <div className='max-w-7xl mx-auto flex items-center px-4 sm:px-6 lg:px-8 h-20'>
-        <div className='w-5 h-5 bg-orange-600 rounded-sm transform rotate-12 flex items-center justify-center shadow-lg shadow-orange-500'>
-          <div className='w-2 h-2 bg-white dark:bg-black rounded-sm'></div>
+    <nav className="bg-white dark:bg-black dark:border-gray-900 dark:text-gray-300 backdrop-blur-md font-quicksand border-b border-gray-200 fixed w-full top-0 left-0 z-50 transition-all duration-300">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <div className="w-5 h-5 bg-orange-500 rounded-sm transform rotate-12 flex items-center justify-center shadow-lg shadow-orange-500">
+              <div className="w-1.5 h-1.5 bg-black rounded-sm" />
+            </div>
+            <span className="text-gray-950 dark:text-white font-bold text-lg md:text-xl">
+              Your <span className="text-gray-400 font-medium">Logo</span>
+            </span>
+          </div>
+          <div className="hidden lg:flex items-center space-x-10">
+            {navItems.map((item: NavItem, index: number) => (
+              <a
+                key={index}
+                href={item.href}
+                className="text-gray-400 hover:text-white font-medium text-xs tracking-wider transition-color-duration-200 relative"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+          <div className="hidden lg:flex items-center gap-4">
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="p-2 rounded-full border border-gray-700 text-gray-400 hover:text-white hover:bg-gray-900 transition-colors text-xs cursor-pointer"
+              aria-label={
+                isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
+            >
+              {isDarkMode ? "Light" : "Dark"}
+            </button>
+            <Button label="Let's Talk" className="rounded-full" />
+          </div>
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              type="button"
+              onClick={onToggleTheme}
+              className="p-3 rounded-xl text-gray-400 hover:text-white hover:bg-gray-700 transition-colors duration-200 text-xs cursor-pointer"
+              quicksand-label={
+                isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+              }
+            >
+              {isDarkMode ? "Light" : "Dark"}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-400 hover:text-white focus:outline-none p-2 rounded-full hover:bg-gray-700 transition-colors duration-200"
+            >
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
-        <span className='dark:text-white text-gray-950 font-bold text-lg tracking-tight'>
-          Your <span className='text-gray-400 font-medium'>Logo</span>
-        </span>
       </div>
-      <div className='hidden md:flex justify-center items-center space-x-8'>
-        {navItems.map((item, index) => (
-          <a
-            key={index}
-            href={item.href}
-            className='text-gray-800 dark:text-gray-400 dark:hover:text-white hover:text-gray-800 font-medium text-sm transition-colors duration-200'
-          >
-            {item.label}
-          </a>
-        ))}
-      </div>
-      <div className='hidden lg:flex items-center gap-4'>
-        <Button
-          type='button'
-          className='p-2 px-4 py-1.5 rounded-full dark:bg-gray-900 dark:text-gray-300 bg-gray-200 text-gray-800 transition-all text-xs cursor-pointer focus:outline-none'
-        >
-          {isDarkmode ? 'Switch to light mode' : 'Switch to dark mode'}
-        </Button>
-      </div>
-      <div className='hidden lg:flex items-center gap-4'>
-        <Button
-          type='button'
-          onClick={toggleMenu}
-          className='bg-orange-600 dark:text-white text-gray-800 px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:bg-orange-600'
-        >
-          Let's Talk
-        </Button>
-      </div>
-      <div className='flex lg:hidden'>
-        <button
-          onClick={toggleMenu}
-          className='text-gray-400 hover:text-white p-2 rounded-lg hover:bg-gray-900 transition-colors duration-200'
-          aria-label={
-            isDarkmode ? 'Switch to light mode' : 'Switch to dark mode'
-          }
-        >
-          <svg
-            className='w-6 h-6'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M4 6h16M4 12h16M4 18h16'
-            />
-          </svg>
-        </button>
-      </div>
-      {isOpen && (
-        <div className='absolute top-full left-0 w-full bg-black text-white flex flex-col items-center space-y-4 py-4 md:hidden'>
+      <div
+        className={`lg:hidden absolute w-full left-0 bg-black border-b border-gray-900 transition-all duration-300 ease-in-out origin-top ${isOpen ? "opacity-100 scale-y-100 visible" : "opacity-0 scale-y-95 invisible pointer-events-none"}`}
+      >
+        <div className="px-4 pt-2 pb-6 space-y-2 shadow-xl">
           {navItems.map((item, index) => (
             <a
               key={index}
               href={item.href}
-              className='text-gray-400 hover:text-white font-medium text-sm transition-colors duration-200'
+              onClick={() => setIsOpen(false)}
+              className="block py-3 px-2 text-base text-gray-400 hover:text-white hover:bg-gray-900 rounded-xl transition-all"
             >
               {item.label}
             </a>
           ))}
-          <Button
-            onClick={toggleMenu}
-            className='bg-orange-500 text-white px-6 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:bg-orange-600'
-          >
-            Let's Talk
-          </Button>
+          <div className="pt-4 px-2">
+            <Button label="Let's Talk" className="w-full rounded-full" />
+          </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
-export default Navbar;
