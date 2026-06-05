@@ -9,9 +9,9 @@ import type {
   Testimonial,
   FaqItem,
 } from '../types/index';
-import img1 from '../assets/Portofolio 1.png';
-import img2 from '../assets/Portofolio 2.png';
-import img3 from '../assets/Portofolio 3.png';
+import img1 from '../assets/Portofolio1.png';
+import img2 from '../assets/Portofolio2.png';
+import img3 from '../assets/Portofolio3.png';
 import img4 from '../assets/Container.png';
 import img5 from '../assets/Website.png';
 import img6 from '../assets/Mobile App Development.png';
