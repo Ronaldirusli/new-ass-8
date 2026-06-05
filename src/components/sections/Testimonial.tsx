@@ -16,11 +16,11 @@ export const Testimonials: React.FC = () => {
         </p>
       </div>
 
-      <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6'>
+      <div className='max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 bg-gray-200 text-gray-950 dark:bg-gray-950 dark:text-gray-200'>
         {testimonials.map((testi, i) => (
           <div
             key={i}
-            className='bg-gray-200 text-gray-950 dark:bg-gray-850 border border-orange-500 rounded-xl p-6 flex flex-col justify-between space-y-6 relative group hover:border-gray-800 transition-colors'
+            className=' text-gray-950 dark:text-gray-200 border border-orange-500 rounded-xl p-6 flex flex-col justify-between space-y-6 relative group hover:border-gray-800 transition-colors'
           >
             <div className='space-y-4'>
               <div className='flex gap-1 text-xs text-orange-600'>
@@ -40,7 +40,7 @@ export const Testimonials: React.FC = () => {
                 className='w-8 h-8 rounded-full object-cover bg-gray-800'
               />
               <div>
-                <h4 className='text-xs font-bold text-gray-950 dark:text-gray-100'>
+                <h4 className='text-xs font-bold text-gray-950 dark:text-gray-200'>
                   {testi.name}
                 </h4>
                 <p className='text-xs text-orange-500'>
