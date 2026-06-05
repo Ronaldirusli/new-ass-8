@@ -26,7 +26,7 @@ import img14 from '../assets/Fintech.png';
 import img15 from '../assets/Ecommerce.png';
 import img16 from '../assets/Health.png';
 import john from '../assets/Johnlee.png';
-import sarah from '../assets/Sarahtan.png';
+import sarah from '../assets/Sarah.png';
 import emily from '../assets/Emilychen.png';
 
 export const navItems: NavItem[] = [
